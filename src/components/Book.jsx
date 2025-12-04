@@ -7,45 +7,33 @@ function Book() {
   const journalEntries = [
     {
       id: "01",
-      name: "Charizard",
-      types: ["Fire", "Flying"],
-      description: "Flies in search of strong opponents. Breathes extremely hot fire that melts anything, but never uses it on weaker foes."
+      date: "01/05/23",
+      description: "It’s been 4 days since my last argument with dad."
     },
     {
       id: "02",
-      name: "Pikachu",
-      types: ["Electric"],
+      date: "01/17/23",
       description: "When Pikachu meet, they touch tails to exchange electricity as a greeting."
     },
     {
       id: "03",
-      name: "Electabuzz",
-      types: ["Electric"],
+      date: "01/18/23",
       description: "Often kept at power plants to regulate electricity. Competes with others to attract lightning during storms."
     },
     {
       id: "04",
-      name: "Sudowoodo",
-      types: ["Rock"],
+      date: "01/19/23",
       description: "Despite looking like a tree, its body is more like rock. Hates water and hides when it rains."
     },
     {
       id: "05",
-      name: "Lucario",
-      types: ["Fighting", "Steel"],
+      date: "1/20/23",
       description: "Can read thoughts and movements by sensing others' aura. No foe can hide from Lucario."
     },
     {
       id: "06",
-      name: "Greninja",
-      types: ["Water", "Dark"],
+      date: "1/21/23",
       description: "Creates throwing stars from compressed water that can slice through metal when thrown at high speed."
-    },
-    {
-      id: "07",
-      name: "Darkrai",
-      types: ["Dark"],
-      description: "A legendary Pokémon that appears on moonless nights, putting people to sleep and giving them nightmares."
     }
   ];
 
@@ -64,11 +52,14 @@ function Book() {
       </div>
 
       <div className="page">
-        <div className="page-content">
+        <div className="page-content" style={{ position: 'relative', justifyContent: 'flex-start', paddingTop: '50px' }}>
             <div className="entry-container">
-                <div className="entry-info">
-                    <p>In case of loss, please return to: </p>
-                    <p>As a reward: $</p>
+                <div className="entry-info" style={{ color: 'black', fontSize: '12px' }}>
+                    <div className="in-case-of-loss">
+                        <p>In case of loss, please return to: </p>
+                        <p style={{ marginBottom: '20px' }}>Feileen Li</p>
+                        <p>As a reward: $0.1</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,22 +67,16 @@ function Book() {
 
       {journalEntries.map((entry) => (
         <div className="page" key={entry.id}>
-          <div className="page-content">
+          <div className="page-content" style={{ position: 'relative' }}>
+            <p className="entry-date" style={{ position: 'absolute', top: '20px', left: '20px', margin: 0 }}>
+              {entry.date}
+            </p>
             <div className="entry-container">
               {/* <img 
                 src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${pokemon.id}.png`} 
                 alt={entry.name} 
               /> */}
               <div className="entry-info">
-                <h2 className="entry-name">{entry.name}</h2>
-                <p className="entry-number">#{entry.id}</p>
-                <div>
-                  {entry.types.map((type) => (
-                    <span key={type} className={`entry-type type-${type.toLowerCase()}`}>
-                      {type}
-                    </span>
-                  ))}
-                </div>
                 <p className="entry-description">{entry.description}</p>
               </div>
             </div>
