@@ -1,90 +1,153 @@
-import React, { useState, useEffect } from 'react'
-import HTMLFlipBook from "react-pageflip";
- 
+import React, { useState } from 'react'
+import frontPageEdgeShading from '../assets/images/front_page_edge_shading.webp'
+import backPageEdgeShading from '../assets/images/back_page_edge_shading.webp'
+import flipBookEdgeShading from '../assets/images/flip_book_edge_shading.webp'
 
 function Book() {
-
-  const journalEntries = [
-    {
-      id: "01",
-      date: "01/05/23",
-      description: "It’s been 4 days since my last argument with dad."
-    },
-    {
-      id: "02",
-      date: "01/17/23",
-      description: "When Pikachu meet, they touch tails to exchange electricity as a greeting."
-    },
-    {
-      id: "03",
-      date: "01/18/23",
-      description: "Often kept at power plants to regulate electricity. Competes with others to attract lightning during storms."
-    },
-    {
-      id: "04",
-      date: "01/19/23",
-      description: "Despite looking like a tree, its body is more like rock. Hates water and hides when it rains."
-    },
-    {
-      id: "05",
-      date: "1/20/23",
-      description: "Can read thoughts and movements by sensing others' aura. No foe can hide from Lucario."
-    },
-    {
-      id: "06",
-      date: "1/21/23",
-      description: "Creates throwing stars from compressed water that can slice through metal when thrown at high speed."
-    }
-  ];
+  const [coverChecked, setCoverChecked] = useState(false);
+  const [page1Checked, setPage1Checked] = useState(false);
+  const [page2Checked, setPage2Checked] = useState(false);
+  const [page3Checked, setPage3Checked] = useState(false);
+  const [page4Checked, setPage4Checked] = useState(false);
+  const [page5Checked, setPage5Checked] = useState(false);
 
   return (
-    <HTMLFlipBook 
-      width={370} 
-      height={500}
-      maxShadowOpacity={0.5}
-      drawShadow={true}
-      showCover={true}
-      size='fixed'
-    >
-      <div className="page" style={{ background: 'transparent' }}>
-        <div className="page-content cover">
+    <div id="flip_book" className={coverChecked ? 'cover-flipped' : ''}>
+      {/* Front Cover */}
+      <div 
+        className={`front_cover ${coverChecked ? 'flipped' : ''}`}
+        onClick={() => setCoverChecked(!coverChecked)}
+        style={{ backgroundImage: `url(${flipBookEdgeShading})` }}
+      >
+        <div id="cover"></div>
+      </div>
+
+      {/* Page 1 */}
+      <div 
+        id="page1" 
+        className={`page ${page1Checked ? 'flipped' : ''}`}
+        style={{ zIndex: page1Checked ? 3 : 8 }}
+      >
+        <div className="front_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage1Checked(!page1Checked)}
+          ></div>
+          <img className="edge_shading" src={frontPageEdgeShading} alt="Front page edge shading" />
+          <div className="front_content"></div>
+        </div>
+        <div className="back_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage1Checked(!page1Checked)}
+          ></div>
+          <img className="edge_shading" src={backPageEdgeShading} alt="Back page edge shading" />
+          <div className="back_content"></div>
         </div>
       </div>
 
-      <div className="page">
-        <div className="page-content" style={{ position: 'relative', justifyContent: 'flex-start', paddingTop: '50px' }}>
-            <div className="entry-container">
-                <div className="entry-info" style={{ color: 'black', fontSize: '12px' }}>
-                    <div className="in-case-of-loss">
-                        <p>In case of loss, please return to: </p>
-                        <p style={{ marginBottom: '20px' }}>Feileen Li</p>
-                        <p>As a reward: $0.1</p>
-                    </div>
-                </div>
-            </div>
+      {/* Page 2 */}
+      <div 
+        id="page2" 
+        className={`page ${page2Checked ? 'flipped' : ''}`}
+        style={{ zIndex: page2Checked ? 4 : 5 }}
+      >
+        <div className="front_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage2Checked(!page2Checked)}
+          ></div>
+          <img className="edge_shading" src={frontPageEdgeShading} alt="Front page edge shading" />
+          <div className="front_content"></div>
+        </div>
+        <div className="back_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage2Checked(!page2Checked)}
+          ></div>
+          <img className="edge_shading" src={backPageEdgeShading} alt="Back page edge shading" />
+          <div className="back_content"></div>
         </div>
       </div>
 
-      {journalEntries.map((entry) => (
-        <div className="page" key={entry.id}>
-          <div className="page-content" style={{ position: 'relative' }}>
-            <p className="entry-date" style={{ position: 'absolute', top: '20px', left: '20px', margin: 0 }}>
-              {entry.date}
-            </p>
-            <div className="entry-container">
-              {/* <img 
-                src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${pokemon.id}.png`} 
-                alt={entry.name} 
-              /> */}
-              <div className="entry-info">
-                <p className="entry-description">{entry.description}</p>
-              </div>
-            </div>
-          </div>
+      {/* Page 3 */}
+      <div 
+        id="page3" 
+        className={`page ${page3Checked ? 'flipped' : ''}`}
+        style={{ zIndex: page3Checked ? 5 : 4 }}
+      >
+        <div className="front_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage3Checked(!page3Checked)}
+          ></div>
+          <img className="edge_shading" src={frontPageEdgeShading} alt="Front page edge shading" />
+          <div className="front_content"></div>
         </div>
-      ))}
+        <div className="back_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage3Checked(!page3Checked)}
+          ></div>
+          <img className="edge_shading" src={backPageEdgeShading} alt="Back page edge shading" />
+          <div className="back_content"></div>
+        </div>
+      </div>
 
-    </HTMLFlipBook>
+      {/* Page 4 */}
+      <div 
+        id="page4" 
+        className={`page ${page4Checked ? 'flipped' : ''}`}
+        style={{ zIndex: page4Checked ? 6 : 3 }}
+      >
+        <div className="front_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage4Checked(!page4Checked)}
+          ></div>
+          <img className="edge_shading" src={frontPageEdgeShading} alt="Front page edge shading" />
+          <div className="front_content"></div>
+        </div>
+        <div className="back_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage4Checked(!page4Checked)}
+          ></div>
+          <img className="edge_shading" src={backPageEdgeShading} alt="Back page edge shading" />
+          <div className="back_content"></div>
+        </div>
+      </div>
+
+      {/* Page 5 */}
+      <div 
+        id="page5" 
+        className={`page ${page5Checked ? 'flipped' : ''}`}
+        style={{ zIndex: page5Checked ? 9 : 2 }}
+      >
+        <div className="front_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage5Checked(!page5Checked)}
+          ></div>
+          <img className="edge_shading" src={frontPageEdgeShading} alt="Front page edge shading" />
+          <div className="front_content"></div>
+        </div>
+        <div className="back_page">
+          <div 
+            className="page-label"
+            onClick={() => setPage5Checked(!page5Checked)}
+          ></div>
+          <img className="edge_shading" src={backPageEdgeShading} alt="Back page edge shading" />
+          <div className="back_content"></div>
+        </div>
+      </div>
+
+      {/* Back Cover */}
+      <div 
+        className="back_cover"
+        style={{ backgroundImage: `url(${flipBookEdgeShading})` }}
+      ></div>
+    </div>
   );
 }
 
